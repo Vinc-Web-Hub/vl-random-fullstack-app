@@ -9,18 +9,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      data: null
-    };
-  },
-  methods: {
-    async fetchData() {
-      const res = await fetch('/api/random');
-      this.data = await res.json();
-    }
-  }
-};
+<script setup>
+import { ref } from 'vue';
+
+const data = ref(null);
+
+async function fetchData() {
+  const res = await fetch('/api/random');
+  data.value = await res.json();
+}
 </script>
